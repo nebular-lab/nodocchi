@@ -18,7 +18,9 @@ class Selenium:
         # https://developers.google.com/web/updates/2017/04/headless-chrome?hl=ja
         options.add_argument("--disable-gpu")
         # ウィンドウ幅設定
-        options.add_argument("--window-size=1280x1696")
+        # options.add_argument("--window-size=1280x1696")
+        options.add_argument("--window-size=1000x25000")
+        # options.add_argument("--start-maximized")
         # スクロールバーを表示しない
         options.add_argument("--hide-scrollbars")
         # ログ周り : https://qiita.com/grohiro/items/718239cdd36da42bd517#%E3%83%AD%E3%82%B0%E3%82%92%E5%87%BA%E3%81%99
