@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>line chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+</head>
+
+<body>
+    <canvas id="fukuoka_temperature_chart" width="500" height="500"></canvas>
+    <script>
+        window.onload = function () {
+            let recievedData = $input.path('$.result');
+            let dataLabels = [...Array(recievedData.length)].map((_, i) => i + 1);
+            console.log(recievedData);
+            console.log(dataLabels);
+            let context = document.querySelector("#fukuoka_temperature_chart").getContext('2d');
+            new Chart(context, {
+                type: 'line',
+                data: {
+                    labels: dataLabels,
+                    //labels: 'test',
+                    datasets: [{
+                        label: "直近50戦のレート推移",
+                        data: recievedData,
+                    }],
+                },
+                options: {
+                    responsive: false,
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
