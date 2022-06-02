@@ -9,15 +9,13 @@ class Selenium:
     def __init__(self):
         options = webdriver.ChromeOptions()
         options.add_argument("--headless")
-        # https://daily.belltail.jp/?p=2691
         options.add_argument("--no-sandbox")
-        # http://chrome.half-moon.org/43.html#e25988df
         options.add_argument("--single-process")
-        # https://developers.google.com/web/updates/2017/04/headless-chrome?hl=ja
         options.add_argument("--disable-gpu")
-        # ウィンドウ幅設定
-        options.add_argument("--window-size=1000x25000")
-        # options.add_argument("--start-maximized")
+        options.add_argument("--window-size=1000x100000")
+        options.add_argument(
+            "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36")
+        # ログ周り : https://qiita.com/grohiro/items/718239cdd36da42bd517#%E3%83%AD%E3%82%B0%E3%82%92%E5%87%BA%E3%81%99
         options.add_argument("--enable-logging")
         # ログ周り : https://qiita.com/grohiro/items/718239cdd36da42bd517#%E3%83%AD%E3%82%B0%E3%82%92%E5%87%BA%E3%81%99
         options.add_argument("--log-level=0")

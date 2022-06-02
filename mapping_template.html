@@ -3,31 +3,62 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>line chart</title>
+    <title>天鳳 レーティング推移グラフ表示</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+
+    <style>
+        body{
+	        margin:0;
+	        padding:0;
+        }
+
+        #canvas_wrapper{
+	        width:500px;
+	        margin:0 auto;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="fukuoka_temperature_chart" width="500" height="500"></canvas>
+    <h1 style="margin-left:1em;">
+        天鳳 レーティング推移グラフ表示
+    </h1>
+    <h2 style="margin-left:1em;">特上卓直近50戦のレーティング推移グラフを表示します。検索ボックスに天鳳IDを入力して検索してください。<br>グラフの表示まで30秒ほど時間がかかります。</h2>
+    <h2 style="margin-left:0.5em;">
+        <form action="" method="get" >
+            <input type="text" name="playerName">
+            <button class="btn">検索</button>
+        </form>
+    </h2>
+
+    <div id="canvas_wrapper">
+        <canvas id="tenhou_rating" width="500" height="500"></canvas>
+    </div>
+
     <script>
-        window.onload = function () {
+        window.onload=function(){
             let recievedData = $input.path('$.result');
             let dataLabels = [...Array(recievedData.length)].map((_, i) => i + 1);
-            console.log(recievedData);
-            console.log(dataLabels);
-            let context = document.querySelector("#fukuoka_temperature_chart").getContext('2d');
+
+            let context = document.querySelector("#tenhou_rating").getContext('2d');
             new Chart(context, {
                 type: 'line',
                 data: {
                     labels: dataLabels,
-                    //labels: 'test',
                     datasets: [{
-                        label: "直近50戦のレート推移",
+                        label: "直近50戦のレーティング推移",
                         data: recievedData,
+                        backgroundColor: 'rgb(150, 150, 255)',
+                        borderColor: 'rgb(140,140,255)',
+
                     }],
                 },
                 options: {
                     responsive: false,
+                    text:"直近50戦のレーティング推移",
+                    legend: {
+                        display: false
+                    },
                 }
             })
         }
