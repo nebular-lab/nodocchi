@@ -1,6 +1,8 @@
 # nodocchi
 [天鳳のポイントのスクレイピングと推移グラフの描画アプリ](https://8kn42foqob.execute-api.ap-northeast-1.amazonaws.com/prod)
+
 技術：python(selenium)、AWS Lambda,APIGateway
+
 以下のような通信で実現されるアプリを開発しました。
 
 現状はフォームを送信してからグラフが描画されるまでに30秒近くかかり、しかも50個のデータしか取得出来ません。
